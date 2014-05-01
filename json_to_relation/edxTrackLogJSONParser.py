@@ -127,7 +127,7 @@ class EdXTrackLogJSONParser(GenericJSONParser):
     #   input_i4x-Medicine-HRP258-problem-98ca37dbf24849debcc29eb36811cb68_3_1_choice_3'
     findHashPattern = re.compile(r'([a-f0-9]{32})')
     
-    def __init__(self, jsonToRelationConverter, mainTableName, logfileID='', progressEvery=1000, replaceTables=False, dbName='test', useDisplayNameCache=False):
+    def __init__(self, jsonToRelationConverter, mainTableName, logfileID='', progressEvery=1000, replaceTables=False, dbName='test', useDisplayNameCache=False, , moduleStore ='data/modulestore_latest.json'):
         '''
         Constructor
 
@@ -176,7 +176,7 @@ class EdXTrackLogJSONParser(GenericJSONParser):
         # This call can cause a portion of the modulestore to be
         # pulled from S3, which may cause exceptions. Those
         # are caught and logged by the caller:
-        self.hashMapper = ModulestoreImporter(os.path.join(os.path.dirname(__file__),'data/modulestore_latest.json'), 
+        self.hashMapper = ModulestoreImporter(os.path.join(os.path.dirname(__file__), moduleStore ), 
                                               useCache=useDisplayNameCache, 
                                               parent=self)
         # Make a list of all short course names 
