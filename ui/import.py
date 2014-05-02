@@ -6,17 +6,30 @@ class FilePicker:
 	def __init__( self, name, window, layout ):
 		self.window = window
 		self.name = name
+		self.file = False
 
 		self.button = QtGui.QPushButton( name )
 		self.button.clicked.connect( self.clicked )
 
 		layout.addWidget( self.button )
 
+	def text( self, header ):
+		self.button.setText( self.name + ': ' + header )
+
 	def clicked( self ):
-		self.file = QtGui.QFileDialog( self.window ).getOpenFileName( self.window , self.name, '~')
+		self.file, _ = QtGui.QFileDialog( self.window ).getOpenFileName( self.window , self.name, '~')
+		self.text( self.file )
 
 def execute():
-	print "Hello"
+	
+	if not moduleStore.file:
+		moduleStore.text( "missing" )
+
+	if not inputFiles.file:
+		inputFiles.text( "missing" )
+
+	if not outputFiles.file:
+		outputFiles.text( "missing" )
 
 app = QtGui.QApplication(sys.argv)
 win = QtGui.QWidget()
