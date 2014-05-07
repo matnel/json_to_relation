@@ -127,7 +127,7 @@ class EdXTrackLogJSONParser(GenericJSONParser):
     #   input_i4x-Medicine-HRP258-problem-98ca37dbf24849debcc29eb36811cb68_3_1_choice_3'
     findHashPattern = re.compile(r'([a-f0-9]{32})')
     
-    def __init__(self, jsonToRelationConverter, mainTableName, logfileID='', progressEvery=1000, replaceTables=False, dbName='test', useDisplayNameCache=False, , moduleStore ='data/modulestore_latest.json'):
+    def __init__(self, jsonToRelationConverter, mainTableName, logfileID='', progressEvery=1000, replaceTables=False, dbName='test', useDisplayNameCache=False, moduleStore ='data/modulestore_latest.json'):
         '''
         Constructor
 
