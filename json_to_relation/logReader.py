@@ -24,12 +24,16 @@ if __name__ == '__main__':
 		print 'berkeleyx {outputfolder} {in_file_or_folder_from_root} {relative_modulestore}'
 		quit()
 
-	## check if we have a folder containing data
-	fileList = []
+	f = sys.argv[2]
+	fileList = [ f ]
 
-	for root, subFolders, files in os.walk(sys.argv[2]):
-		for file in files:
-			fileList.append(os.path.join(root,file))
+	if os.path.isdir( f ):
+
+		fileList = []
+
+		for root, subFolders, files in os.walk( f ):
+			for file in files:
+				fileList.append(os.path.join(root,file))
 
 	for f in fileList:
 		print "Doing", f
